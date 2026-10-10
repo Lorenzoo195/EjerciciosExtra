@@ -28,12 +28,14 @@ public class MenuExtra
             Console.WriteLine("========================");
             Console.WriteLine("1. Videojuego (Ejercicio 1)");
             Console.WriteLine("2. Streaming (Ejercicio 2)");
+            Console.WriteLine("3. Buscar por titulo (Ejercicio 3)");
+            Console.WriteLine("4. Buscar peliculas (Ejercicio 4)");
             Console.WriteLine("0. Salir");
             Console.WriteLine("Selecciona una opción:");
 
-            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 2)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 4)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-2).");
+                Console.WriteLine("Error: selecciona una opción válida (0-4).");
                 continue;
             }
 
@@ -88,7 +90,7 @@ public class MenuExtra
 
     private void EjecutarEjercicio3()
     {
-        Console.WriteLine("Titulo a buscar: ");
+        Console.WriteLine("\n--- EJERCICIO 3:Titulo a buscar: ---");
 
         List<Contenido> catalogo = GenerarCatalogoPrueba();
 
@@ -113,7 +115,7 @@ public class MenuExtra
 
     private void EjecutarEjercicio4()
     {
-        Console.WriteLine("Buscar las peliculas del catalogo: ");
+        Console.WriteLine("\n--- EJERCICIO 4:Buscar las peliculas del catalogo: ---");
 
         List<Contenido> catalogo = GenerarCatalogoPrueba();
 
