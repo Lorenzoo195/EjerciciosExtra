@@ -1,6 +1,5 @@
 using Videojuego;
 using Streaming;
-using System.Net.Mime; // ¡Importante para el Ejercicio 2!
 
 public class MenuExtra
 {
