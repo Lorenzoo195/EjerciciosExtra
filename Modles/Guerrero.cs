@@ -9,8 +9,8 @@ public class Guerrero : Personaje
         Fuerza = fuerza;
     }
 
-    public override string ObtenerDescripcion()
+    public override void ObtenerDescripcion()
     {
-        return $" El guerrero tiene esta fuerza {Fuerza}.";
+        Console.WriteLine($" El guerrero tiene esta fuerza {Fuerza}.");
     }
 }

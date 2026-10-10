@@ -8,5 +8,5 @@ public abstract class Personaje
         Nombre = nombre;
         Vida = vida;
     }
-    public abstract string ObtenerDescripcion();
+    public abstract void ObtenerDescripcion();
 }
