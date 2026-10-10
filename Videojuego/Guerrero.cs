@@ -11,6 +11,6 @@ public class Guerrero : Personaje
 
     public override string ObtenerDescripcion()
     {
-        return $" El guerrero tiene esta fuerza {Fuerza}.";
+        return $"Soy {Nombre}, un Guerrero con {Vida} puntos de vida y mi fuerza es {Fuerza}.";
     }
 }

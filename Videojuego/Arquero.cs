@@ -11,6 +11,6 @@ public class Arquero : Personaje
 
     public override string ObtenerDescripcion()
     {
-       return $"El arquero tiene estas flechas {NumeroFlechas}";
+       return $"Soy {Nombre}, un Arquero con {Vida} puntos de vida y tengo {NumeroFlechas} flechas.";
     }
 }

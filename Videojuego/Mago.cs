@@ -10,6 +10,6 @@ public class Mago : Personaje
     }
     public override string ObtenerDescripcion()
     {
-       return  $"El mago tiene este mana {Mana}";
+       return $"Soy {Nombre}, un Mago con {Vida} puntos de vida y mi maná es {Mana}.";
     }
 }
