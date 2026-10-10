@@ -1,16 +1,16 @@
-using Videojuego;
+namespace Videojuego;
 
 public class Guerrero : Personaje
 {
-    int Fuerza {get; set;}
+    public int Fuerza {get; set;}
 
     public Guerrero(string nombre, int vida, int fuerza) : base(nombre, vida)
     {
         Fuerza = fuerza;
     }
 
-    public override void ObtenerDescripcion()
+    public override string ObtenerDescripcion()
     {
-        Console.WriteLine($" El guerrero tiene esta fuerza {Fuerza}.");
+        return $" El guerrero tiene esta fuerza {Fuerza}.";
     }
 }
