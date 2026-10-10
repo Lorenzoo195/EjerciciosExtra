@@ -49,6 +49,9 @@ public class MenuExtra
                 case 3:
                     EjecutarEjercicio3();
                     break;
+                case 4:
+                    EjecutarEjercicio4();
+                    break;
                 case OpcionSalir:
                     Console.WriteLine("¡Hasta pronto!");
                     break;
@@ -106,6 +109,21 @@ public class MenuExtra
         if (!encontrado)
         {
             Console.WriteLine("\nNo se ha encontrado ningún contenido con ese título.");
+        }
+    }
+
+    private void EjecutarEjercicio4()
+    {
+        Console.WriteLine("Buscar las peliculas del catalogo: ");
+
+        List<Contenido> catalogo = GenerarCatalogoPrueba();
+
+        foreach (Contenido c in catalogo)
+        {
+            if (c is Pelicula)
+            {
+                Console.WriteLine(c.ObtenerDescripcion());
+            }
         }
     }
 }
