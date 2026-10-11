@@ -1,3 +1,5 @@
+namespace Menus;
+
 using Videojuego;
 using Streaming;
 using Biblioteca;
@@ -36,9 +38,9 @@ public class MenuExtra
 
         do
         {
-            Console.WriteLine("\n========================");
-            Console.WriteLine("    EJERCICIOS EXTRA    ");
-            Console.WriteLine("========================");
+            Console.WriteLine("\n==========================================");
+            Console.WriteLine("    EJERCICIOS EXTRA (Ejercicios 1 al 6)    ");
+            Console.WriteLine("============================================");
             Console.WriteLine("1. Videojuego (Ejercicio 1)");
             Console.WriteLine("2. Streaming (Ejercicio 2)");
             Console.WriteLine("3. Buscar por titulo (Ejercicio 3)");
