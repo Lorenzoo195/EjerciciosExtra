@@ -11,6 +11,6 @@ public class Moto : Vehiculo
 
     public override string MostrarDetalles()
     {
-        return $"El coche con matricula {Matricula} y marca {Marca} tiene {Ruedas} ruedas";
+        return $"La moto con matricula {Matricula} y marca {Marca} tiene {Ruedas} ruedas";
     }
 }

@@ -11,6 +11,6 @@ public class Furgoneta : Vehiculo
 
     public override string MostrarDetalles()
     {
-        return $"El coche con matricula {Matricula} y marca {Marca} pesa {Peso}Kg";
+        return $"La furgoneta con matricula {Matricula} y marca {Marca} pesa {Peso}Kg";
     }
 }
