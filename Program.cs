@@ -6,13 +6,14 @@ do
 {
     Console.WriteLine("\n=== PANEL PRINCIPAL DE EJERCICIOS ===");
     Console.WriteLine("1. Bloque 1 (Ejercicios 1 al 6)");
-    Console.WriteLine("2. Bloque 2 (Ejercicios 7 al 20)");
+    Console.WriteLine("2. Bloque 2 (Ejercicios 7 al 13)");
+    Console.WriteLine("3. Bloque 3 (Ejercicios 14 al 20)");
     Console.WriteLine("0. Salir de la aplicación");
     Console.Write("Selecciona qué bloque quieres abrir: ");
 
-    if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 2)
+    if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 3)
     {
-        Console.WriteLine("Error: selecciona una opción válida (0-2).");
+        Console.WriteLine("Error: selecciona una opción válida (0-3).");
         continue;
     }
     switch (opcion)
@@ -24,6 +25,10 @@ do
         case 2:
             MenuExtra2 menu2 = new MenuExtra2();
             menu2.Iniciar();
+            break;
+        case 3:
+            MenuExtra3 menu3 = new MenuExtra3();
+            menu3.Iniciar();
             break;
         case 0:
             Console.WriteLine("Cerrando la aplicación...");
