@@ -1,5 +1,6 @@
 namespace Menus;
 
+using Biblioteca;
 using Parking;
 using Producto;
 
@@ -13,18 +14,19 @@ public class MenuExtra2
 
         do
         {
-            Console.WriteLine("\n=== PARKING ===");
+            Console.WriteLine("\n=== BLOQUE 2 ===");
             Console.WriteLine("1. Ver vehículos");
             Console.WriteLine("2. Buscar por matrícula");
             Console.WriteLine("3. Mostrar coches");
-            Console.WriteLine("4. Mostrar los articulos con el precio mas bajo");
-            Console.WriteLine("5. Mostrar el precio medio de los articulos");
+            Console.WriteLine("4. Artículo más barato");
+            Console.WriteLine("5. Precio medio de los artículos");
+            Console.WriteLine("6. Buscar artículos por precio máximo");
             Console.WriteLine("0. Salir");
             Console.WriteLine("Selecciona una opción:");
 
-            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 5)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 6)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-5).");
+                Console.WriteLine("Error: selecciona una opción válida (0-6).");
                 continue;
             }
 
@@ -44,6 +46,9 @@ public class MenuExtra2
                     break;
                 case 5:
                     PrecioMedio(revista);
+                    break;
+                case 6:
+                    BuscarPorPrecioMaximo(revista);
                     break;
                 case 0:
                     Console.WriteLine("¡Hasta pronto!");
@@ -100,6 +105,40 @@ public class MenuExtra2
         }
         decimal media = suma / cont;
         Console.WriteLine($"La media es: {media:C}");
+    }
+
+    private void BuscarPorPrecioMaximo(List<Articulo> articulos)
+    {
+        Console.Write("\nPrecio máximo: ");
+        if (decimal.TryParse(Console.ReadLine(), out decimal precioMaximo))
+        {
+            List<Articulo> filtrados = new List<Articulo>();
+
+            foreach (Articulo a in articulos)
+            {
+                if (a.Precio <= precioMaximo)
+                {
+                    filtrados.Add(a);
+                }
+            }
+
+            if (filtrados.Count == 0)
+            {
+                Console.WriteLine("No existe ningún artículo con precio igual o inferior.");
+            }
+            else
+            {
+                Console.WriteLine("\nArtículos encontrados:");
+                foreach (Articulo a in filtrados)
+                {
+                    Console.WriteLine($"{a.Nombre} - {a.Precio:C}");
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Error: formato de precio incorrecto.");
+        }
     }
 
     private void VerVehiculos(List<Vehiculo> vehiculos)
