@@ -1,6 +1,7 @@
 namespace Menus;
 
 using Empresa;
+using Animales;
 
 public class MenuExtra3
 {
@@ -8,17 +9,18 @@ public class MenuExtra3
     {
         int opcion = 0;
         List<Empleado> equipo = GenerarEmpleadosPrueba();
+        List<Animal> zoo = GenerarAnimalesPrueba();
         do
         {
             Console.WriteLine("\n=== BLOQUE 3 ===");
             Console.WriteLine("1. Ver informacion de todos los empleados");
-            Console.WriteLine("2. Ver informacion de la plantilla");
+            Console.WriteLine("2. Ver informacion de los animales");
             Console.WriteLine("3. ");
             Console.WriteLine("0. Salir");
 
-            if(!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 3)
+            if(!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 2)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-3).");
+                Console.WriteLine("Error: selecciona una opción válida (0-2).");
                 continue;
             }
 
@@ -26,6 +28,9 @@ public class MenuExtra3
             {
                 case 1: 
                     VerEmpleados(equipo);
+                    break;
+                case 2: 
+                    VerAnimales(zoo);
                     break;
                 case 0: 
                     Console.WriteLine("¡Hasta pronto!");
@@ -47,12 +52,33 @@ public class MenuExtra3
         };
     }
 
+    private List<Animal> GenerarAnimalesPrueba()
+    {
+        return new List<Animal>
+        {
+             new Perro("Toby", 4),
+            new Perro("Rex", 4),
+            new Gato("Luna", "Siamés"),
+            new Gato("Misi", "Persa"),
+            new Pajaro("Piolín", 25)
+        };
+    }
+
     private void VerEmpleados(List<Empleado> equipo)
     {
         Console.WriteLine("\n--- EMPLEADOS DE LA EMPRESA ---");
         foreach (Empleado v in equipo)
         {
             Console.WriteLine(v.MostrarInformacion());
+        }
+    }
+
+    private void VerAnimales(List<Animal> zoo)
+    {
+        Console.WriteLine("\n--- Comportamiento de los animales del zoo ---");
+        foreach(Animal a in zoo)
+        {
+           Console.WriteLine($"{a.Nombre}: {a.HacerSonido()}");
         }
     }
 }
