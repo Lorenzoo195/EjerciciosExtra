@@ -18,12 +18,13 @@ public class MenuExtra2
             Console.WriteLine("2. Buscar por matrícula");
             Console.WriteLine("3. Mostrar coches");
             Console.WriteLine("4. Mostrar los articulos con el precio mas bajo");
+            Console.WriteLine("5. Mostrar el precio medio de los articulos");
             Console.WriteLine("0. Salir");
             Console.WriteLine("Selecciona una opción:");
 
-            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 4)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 5)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-4).");
+                Console.WriteLine("Error: selecciona una opción válida (0-5).");
                 continue;
             }
 
@@ -41,8 +42,11 @@ public class MenuExtra2
                 case 4:
                     BuscarArticuloMasBarato(revista);
                     break;
+                case 5:
+                    PrecioMedio(revista);
+                    break;
                 case 0:
-                    Console.WriteLine("Saliendo del parking...");
+                    Console.WriteLine("¡Hasta pronto!");
                     break;
             }
 
@@ -74,14 +78,28 @@ public class MenuExtra2
     {
         Articulo masBarato = articulos[0];
 
-        foreach(Articulo a in articulos)
+        foreach (Articulo a in articulos)
         {
-            if(a.Precio < masBarato.Precio)
+            if (a.Precio < masBarato.Precio)
             {
                 masBarato = a;
             }
         }
         Console.WriteLine($"El artículo más barato es: {masBarato.Nombre} - {masBarato.Precio:C} ");
+    }
+
+    private void PrecioMedio(List<Articulo> articulos)
+    {
+        decimal suma = 0;
+        int cont = 0;
+        foreach (Articulo a in articulos)
+        {
+            suma += a.Precio;
+            cont++;
+
+        }
+        decimal media = suma / cont;
+        Console.WriteLine($"La media es: {media:C}");
     }
 
     private void VerVehiculos(List<Vehiculo> vehiculos)
