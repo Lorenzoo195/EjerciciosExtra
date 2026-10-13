@@ -1,12 +1,14 @@
 namespace Menus;
 
 using Parking;
+using Producto;
 
 public class MenuExtra2
 {
     public void Iniciar()
     {
         List<Vehiculo> parking = GenerarVehiculosPrueba();
+        List<Articulo> revista = GenerarArticulosPrueba();
         int opcion = 0;
 
         do
@@ -15,12 +17,13 @@ public class MenuExtra2
             Console.WriteLine("1. Ver vehículos");
             Console.WriteLine("2. Buscar por matrícula");
             Console.WriteLine("3. Mostrar coches");
+            Console.WriteLine("4. Mostrar los articulos con el precio mas bajo");
             Console.WriteLine("0. Salir");
             Console.WriteLine("Selecciona una opción:");
 
-            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 3)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 4)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-3).");
+                Console.WriteLine("Error: selecciona una opción válida (0-4).");
                 continue;
             }
 
@@ -34,6 +37,9 @@ public class MenuExtra2
                     break;
                 case 3:
                     MostrarCoches(parking);
+                    break;
+                case 4:
+                    BuscarArticuloMasBarato(revista);
                     break;
                 case 0:
                     Console.WriteLine("Saliendo del parking...");
@@ -52,6 +58,30 @@ public class MenuExtra2
             new Moto("9999-XYZ", "Yamaha", 2),
             new Furgoneta("4321-FFF", "Renault", 2200)
         };
+    }
+
+    private List<Articulo> GenerarArticulosPrueba()
+    {
+        return new List<Articulo>
+        {
+            new Articulo("Ratón", 15.99m),
+            new Articulo("Cable USB", 4.50m),
+            new Articulo("Teclado", 29.95m)
+        };
+    }
+
+    private void BuscarArticuloMasBarato(List<Articulo> articulos)
+    {
+        Articulo masBarato = articulos[0];
+
+        foreach(Articulo a in articulos)
+        {
+            if(a.Precio < masBarato.Precio)
+            {
+                masBarato = a;
+            }
+        }
+        Console.WriteLine($"El artículo más barato es: {masBarato.Nombre} - {masBarato.Precio:C} ");
     }
 
     private void VerVehiculos(List<Vehiculo> vehiculos)
