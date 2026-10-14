@@ -16,32 +16,36 @@ public class MenuExtra3
             Console.WriteLine("1. Ver informacion de todos los empleados");
             Console.WriteLine("2. Ver informacion de los animales");
             Console.WriteLine("3. Cajero Automatico");
+            Console.WriteLine("4. Adivina el numero secreto");
             Console.WriteLine("0. Salir");
 
-            if(!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 3)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 4)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-3).");
+                Console.WriteLine("Error: selecciona una opción válida (0-4).");
                 continue;
             }
 
             switch (opcion)
             {
-                case 1: 
+                case 1:
                     VerEmpleados(equipo);
                     break;
-                case 2: 
+                case 2:
                     VerAnimales(zoo);
                     break;
-                case 3: 
+                case 3:
                     MenuCajero cajero = new MenuCajero();
                     cajero.Iniciar();
                     break;
-                case 0: 
+                case 4:
+                    AdivinaElNumero();
+                    break;
+                case 0:
                     Console.WriteLine("¡Hasta pronto!");
                     break;
             }
 
-        }while(opcion != 0);
+        } while (opcion != 0);
     }
 
     private List<Empleado> GenerarEmpleadosPrueba()
@@ -80,9 +84,40 @@ public class MenuExtra3
     private void VerAnimales(List<Animal> zoo)
     {
         Console.WriteLine("\n--- Comportamiento de los animales del zoo ---");
-        foreach(Animal a in zoo)
+        foreach (Animal a in zoo)
         {
-           Console.WriteLine($"{a.Nombre}: {a.HacerSonido()}");
+            Console.WriteLine($"{a.Nombre}: {a.HacerSonido()}");
         }
+    }
+    public void AdivinaElNumero()
+    {
+        Random random = new Random();
+        int numSecreto = random.Next(1, 101); //int numSecreto = Random.Shared.Next(1, 101);
+        int contIntentos = 0;
+        int intento = 0;
+        do
+        {
+            Console.Write("Adivina el número (1-100): ");
+            if (int.TryParse(Console.ReadLine(), out  intento))
+            {
+                contIntentos++;
+                if (intento < numSecreto)
+                {
+                    Console.WriteLine("El número es mayor.");
+                }
+                else if (intento > numSecreto)
+                {
+                    Console.WriteLine("El número es menor.");
+                }
+                else
+                {
+                    Console.WriteLine($"Correcto. Has necesitado {contIntentos} intentos.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error: introduce un número válido.");
+            }
+        } while (intento != numSecreto);
     }
 }
