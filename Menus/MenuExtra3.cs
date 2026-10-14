@@ -15,12 +15,12 @@ public class MenuExtra3
             Console.WriteLine("\n=== BLOQUE 3 ===");
             Console.WriteLine("1. Ver informacion de todos los empleados");
             Console.WriteLine("2. Ver informacion de los animales");
-            Console.WriteLine("3. ");
+            Console.WriteLine("3. Cajero Automatico");
             Console.WriteLine("0. Salir");
 
-            if(!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 2)
+            if(!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 3)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-2).");
+                Console.WriteLine("Error: selecciona una opción válida (0-3).");
                 continue;
             }
 
@@ -31,6 +31,10 @@ public class MenuExtra3
                     break;
                 case 2: 
                     VerAnimales(zoo);
+                    break;
+                case 3: 
+                    MenuCajero cajero = new MenuCajero();
+                    cajero.Iniciar();
                     break;
                 case 0: 
                     Console.WriteLine("¡Hasta pronto!");
