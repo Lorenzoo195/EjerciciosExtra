@@ -2,14 +2,16 @@ namespace Menus;
 
 using Empresa;
 using Animales;
+using Gimnasio;
 
 public class MenuExtra3
 {
+    List<Animal> zoo = GenerarAnimalesPrueba();
+
     public void Iniciar()
     {
         int opcion = 0;
         List<Empleado> equipo = GenerarEmpleadosPrueba();
-        List<Animal> zoo = GenerarAnimalesPrueba();
         do
         {
             Console.WriteLine("\n=== BLOQUE 3 ===");
@@ -17,11 +19,12 @@ public class MenuExtra3
             Console.WriteLine("2. Ver informacion de los animales");
             Console.WriteLine("3. Cajero Automatico");
             Console.WriteLine("4. Adivina el numero secreto");
+            Console.WriteLine("5. Gimnasio (Proyecto final)");
             Console.WriteLine("0. Salir");
 
-            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 4)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 5)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-4).");
+                Console.WriteLine("Error: selecciona una opción válida (0-5).");
                 continue;
             }
 
@@ -31,7 +34,7 @@ public class MenuExtra3
                     VerEmpleados(equipo);
                     break;
                 case 2:
-                    VerAnimales(zoo);
+                    VerAnimales();
                     break;
                 case 3:
                     MenuCajero cajero = new MenuCajero();
@@ -40,6 +43,11 @@ public class MenuExtra3
                 case 4:
                     AdivinaElNumero();
                     break;
+                case 5:
+                    MenuGimnasio gimnasio = new MenuGimnasio();
+                    gimnasio.Iniciar();
+                    break;
+
                 case 0:
                     Console.WriteLine("¡Hasta pronto!");
                     break;
@@ -60,7 +68,7 @@ public class MenuExtra3
         };
     }
 
-    private List<Animal> GenerarAnimalesPrueba()
+    private static List<Animal> GenerarAnimalesPrueba()
     {
         return new List<Animal>
         {
@@ -81,7 +89,7 @@ public class MenuExtra3
         }
     }
 
-    private void VerAnimales(List<Animal> zoo)
+    private void VerAnimales()
     {
         Console.WriteLine("\n--- Comportamiento de los animales del zoo ---");
         foreach (Animal a in zoo)
@@ -92,7 +100,7 @@ public class MenuExtra3
     public void AdivinaElNumero()
     {
         Random random = new Random();
-        int numSecreto = random.Next(1, 101); //int numSecreto = Random.Shared.Next(1, 101);
+        int numSecreto = random.Next(1, 101);
         int contIntentos = 0;
         int intento = 0;
         do
