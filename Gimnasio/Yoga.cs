@@ -8,6 +8,8 @@ public class Yoga : Actividad
     {
         NombreProfesor = nombreprofesor;
     }
+
+    public Yoga() {}
     public override string MostrarDetalles()
     {
         return $" Tiene de nombre {Nombre} y dura {Duracion} minutos y la clase tiene como maximo {MaxParticipantes} y la nombre del profesor es {NombreProfesor}";;

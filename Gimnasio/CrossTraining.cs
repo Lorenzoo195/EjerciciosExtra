@@ -7,7 +7,8 @@ public class CrossTraining : Actividad
     {
         LugarClase = lugarclase;
     }
-        
+    
+    public CrossTraining() {}
     
     public override string MostrarDetalles()
     {

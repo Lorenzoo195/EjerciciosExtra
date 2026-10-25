@@ -1,13 +1,19 @@
+using System.Text.Json;
 using Gimnasio;
 
 namespace Menus;
 
 public class MenuGimnasio
 {
+    private DiaGimnasio diaGimnasio;
+
+    public MenuGimnasio() {
+        diaGimnasio = CargarJson();
+    }
     public void Iniciar()
     {
         int opcion = 0;
-        List<Actividad> gimnasio = GenerarClasesPrueba();
+        List<Actividad> gimnasio = diaGimnasio.Actividades;
         do
         {
             Console.WriteLine("\n=== GIMNASIO ===");
@@ -42,6 +48,7 @@ public class MenuGimnasio
                     break;
 
                 case 0:
+                    GuardarJson();
                     Console.WriteLine("Saliendo del gimnasio...");
                     break;
             }
@@ -156,5 +163,30 @@ public class MenuGimnasio
         {
             Console.WriteLine("Error: opción no válida.");
         }
+    }
+
+    private void GuardarJson()
+    {
+        string json = JsonSerializer.Serialize(diaGimnasio);
+        File.WriteAllText("gimnasio.json", json);
+    }
+
+    private DiaGimnasio CargarJson()
+    {
+        string filePath = "gimnasio.json";
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            DiaGimnasio cargado = JsonSerializer.Deserialize<DiaGimnasio>(json);
+            if (cargado != null)
+            {
+                return cargado;
+            }
+        }
+
+            return new DiaGimnasio
+        {
+            Actividades = GenerarClasesPrueba()
+        };
     }
 }

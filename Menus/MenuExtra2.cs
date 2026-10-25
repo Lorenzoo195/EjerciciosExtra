@@ -6,10 +6,14 @@ using Producto;
 
 public class MenuExtra2
 {
+
+    private List<Vehiculo> vehiculos;
+
+    private List<Articulo> articulos;
     public void Iniciar()
     {
-        List<Vehiculo> parking = GenerarVehiculosPrueba();
-        List<Articulo> revista = GenerarArticulosPrueba();
+        vehiculos = GenerarVehiculosPrueba();
+        articulos = GenerarArticulosPrueba();
         int opcion = 0;
 
         do
@@ -33,22 +37,22 @@ public class MenuExtra2
             switch (opcion)
             {
                 case 1:
-                    VerVehiculos(parking);
+                    VerVehiculos();
                     break;
                 case 2:
-                    BuscarPorMatricula(parking);
+                    BuscarPorMatricula();
                     break;
                 case 3:
-                    MostrarCoches(parking);
+                    MostrarCoches();
                     break;
                 case 4:
-                    BuscarArticuloMasBarato(revista);
+                    BuscarArticuloMasBarato();
                     break;
                 case 5:
-                    PrecioMedio(revista);
+                    PrecioMedio();
                     break;
                 case 6:
-                    BuscarPorPrecioMaximo(revista);
+                    BuscarPorPrecioMaximo();
                     break;
                 case 0:
                     Console.WriteLine("¡Hasta pronto!");
@@ -79,7 +83,7 @@ public class MenuExtra2
         };
     }
 
-    private void BuscarArticuloMasBarato(List<Articulo> articulos)
+    private void BuscarArticuloMasBarato()
     {
         Articulo masBarato = articulos[0];
 
@@ -93,7 +97,7 @@ public class MenuExtra2
         Console.WriteLine($"El artículo más barato es: {masBarato.Nombre} - {masBarato.Precio:C} ");
     }
 
-    private void PrecioMedio(List<Articulo> articulos)
+    private void PrecioMedio()
     {
         decimal suma = 0;
         int cont = 0;
@@ -107,7 +111,7 @@ public class MenuExtra2
         Console.WriteLine($"La media es: {media:C}");
     }
 
-    private void BuscarPorPrecioMaximo(List<Articulo> articulos)
+    private void BuscarPorPrecioMaximo()
     {
         Console.Write("\nPrecio máximo: ");
         if (decimal.TryParse(Console.ReadLine(), out decimal precioMaximo))
@@ -141,7 +145,7 @@ public class MenuExtra2
         }
     }
 
-    private void VerVehiculos(List<Vehiculo> vehiculos)
+    private void VerVehiculos()
     {
         Console.WriteLine("\n--- VEHÍCULOS EN EL PARKING ---");
         foreach (Vehiculo v in vehiculos)
@@ -150,7 +154,7 @@ public class MenuExtra2
         }
     }
 
-    private void BuscarPorMatricula(List<Vehiculo> vehiculos)
+    private void BuscarPorMatricula()
     {
         Console.Write("\nIntroduce la matrícula a buscar: ");
         string matriculaBuscada = Console.ReadLine();
@@ -173,7 +177,7 @@ public class MenuExtra2
         }
     }
 
-    private void MostrarCoches(List<Vehiculo> vehiculos)
+    private void MostrarCoches()
     {
         Console.WriteLine("\n--- COCHES EN EL PARKING ---");
         foreach (Vehiculo v in vehiculos)

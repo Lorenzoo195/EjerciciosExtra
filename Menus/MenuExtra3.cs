@@ -6,12 +6,14 @@ using Gimnasio;
 
 public class MenuExtra3
 {
-    List<Animal> zoo = GenerarAnimalesPrueba();
+    private List<Animal> zoo;
+    private List<Empleado> equipo;
 
     public void Iniciar()
     {
         int opcion = 0;
-        List<Empleado> equipo = GenerarEmpleadosPrueba();
+        equipo = GenerarEmpleadosPrueba();
+        zoo = GenerarAnimalesPrueba();
         do
         {
             Console.WriteLine("\n=== BLOQUE 3 ===");
@@ -31,7 +33,7 @@ public class MenuExtra3
             switch (opcion)
             {
                 case 1:
-                    VerEmpleados(equipo);
+                    VerEmpleados();
                     break;
                 case 2:
                     VerAnimales();
@@ -80,7 +82,7 @@ public class MenuExtra3
         };
     }
 
-    private void VerEmpleados(List<Empleado> equipo)
+    private void VerEmpleados()
     {
         Console.WriteLine("\n--- EMPLEADOS DE LA EMPRESA ---");
         foreach (Empleado v in equipo)

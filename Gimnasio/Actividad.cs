@@ -1,4 +1,11 @@
+using System.Text.Json.Serialization;
+
 namespace Gimnasio;
+
+[JsonPolymorphic(TypeDiscriminatorPropertyName = "$tipo")]
+[JsonDerivedType(typeof(Spinning), "spinning")]
+[JsonDerivedType(typeof(Yoga), "yoga")]
+[JsonDerivedType(typeof(CrossTraining), "crossTraining")]
 
 public abstract class Actividad
 {
@@ -14,6 +21,8 @@ public abstract class Actividad
         Duracion = duracion;
         MaxParticipantes = maxparticipantes;
     }
+
+    public Actividad() {}
 
     public abstract string MostrarDetalles();
 

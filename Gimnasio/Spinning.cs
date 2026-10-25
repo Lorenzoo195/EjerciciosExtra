@@ -10,6 +10,8 @@ public class Spinning : Actividad
     {
         MarcaBici = marcabici;
     }
+
+    public Spinning() {}
     public override string MostrarDetalles()
     {
         return  $" Tiene de nombre {Nombre} y dura {Duracion} minutos y la clase tiene como maximo {MaxParticipantes} y la marca de la bicicleta {MarcaBici}";
